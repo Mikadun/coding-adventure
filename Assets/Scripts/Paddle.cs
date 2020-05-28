@@ -6,10 +6,10 @@ public class Paddle : MonoBehaviour
 {
     [SerializeField]
     public float speed = 10f;
+    public bool isRight;
 
     private float height;
-    private bool isRight;
-    private string input = "Horizontal";
+    private string input;
 
     void Start()
     {
@@ -25,11 +25,13 @@ public class Paddle : MonoBehaviour
         {
             pos = new Vector2(GameHandler.topRight.x, 0);
             pos -= Vector2.right * transform.localScale.x;
+            input = "Horizontal";
         }
         else
         {
             pos = new Vector2(GameHandler.bottomLeft.x, 0);
             pos += Vector2.right * transform.localScale.x;
+            input = "Vertical";
 
         }
         transform.position = pos;
