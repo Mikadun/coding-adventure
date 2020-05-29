@@ -27,6 +27,9 @@ public class GameHandler : MonoBehaviour
     private void Update()
     {
         if (Input.GetButton("Submit"))
+        {
+            Debug.Log("Submit");
             ball.Reset();
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
 
     private Vector2 direction;
     private float radius;
+
     void Start()
     {
         radius = transform.localScale.x / 2;
@@ -23,8 +24,8 @@ public class Ball : MonoBehaviour
 
     public void Reset()
     {
-        direction = Vector2.one.normalized;
         transform.position = new Vector2(GameHandler.center.x, GameHandler.center.y);
+        direction = new Vector2(Vector2.one.normalized.x, Vector2.one.normalized.y);
     }
     // Update is called once per frame
     void Update()
@@ -42,7 +43,7 @@ public class Ball : MonoBehaviour
             direction = Vector2.zero;
         }
 
-        if (transform.position.x > GameHandler.bottomLeft.x - radius && direction.x > 0)
+        if (transform.position.x > GameHandler.topRight.x - radius && direction.x > 0)
         {
             Debug.Log("Left wins");
             direction = Vector2.zero;
