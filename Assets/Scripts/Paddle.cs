@@ -6,31 +6,31 @@ public class Paddle : MonoBehaviour
 {
     [SerializeField]
     public float speed = 10f;
-    public bool isRight;
+    public bool isTop;
 
-    private float height;
+    private float width;
     private string input;
 
     void Start()
     {
-        height = transform.localScale.y;
+        width = transform.localScale.x;
     }
 
-    public void Init(bool isRightPaddle)
+    public void Init(bool isTopPaddle)
     {
-        isRight = isRightPaddle;
+        isTop = isTopPaddle;
         Vector2 pos = Vector2.zero;
 
-        if (isRightPaddle)
+        if (isTopPaddle)
         {
-            pos = new Vector2(GameHandler.topRight.x, 0);
-            pos -= Vector2.right * transform.localScale.x;
+            pos = new Vector2(GameHandler.center.x, GameHandler.topRight.y);
+            pos.y -= transform.localScale.y;
             input = "Horizontal";
         }
         else
         {
-            pos = new Vector2(GameHandler.bottomLeft.x, 0);
-            pos += Vector2.right * transform.localScale.x;
+            pos = new Vector2(GameHandler.center.x, GameHandler.bottomLeft.y);
+            pos.y += transform.localScale.y;
             input = "Vertical";
 
         }
@@ -42,14 +42,14 @@ public class Paddle : MonoBehaviour
     {
         float move = Input.GetAxis(input) * Time.deltaTime * speed;
 
-        if (transform.position.y < GameHandler.bottomLeft.y + height / 2 && move < 0)
+        if (transform.position.x < GameHandler.bottomLeft.x + width / 2 && move < 0)
         {
             move = 0;
         }
-        if (transform.position.y > GameHandler.topRight.y - height / 2 & move > 0)
+        if (transform.position.x > GameHandler.topRight.x - width / 2 & move > 0)
         {
             move = 0;
         }
-        transform.Translate(move * Vector2.up);
+        transform.Translate(move * Vector2.right);
     }
 }

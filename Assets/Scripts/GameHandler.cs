@@ -23,13 +23,4 @@ public class GameHandler : MonoBehaviour
         paddle1.Init(true);
         paddle2.Init(false);
     }
-
-    private void Update()
-    {
-        if (Input.GetButton("Submit"))
-        {
-            Debug.Log("Submit");
-            ball.Reset();
-        }
-    }
 }
