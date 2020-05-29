@@ -10,7 +10,6 @@ public class Ball : MonoBehaviour
     private Vector2 direction;
     private float radius;
     private bool gameOver;
-    public float incSpeed = 0.01f;
 
     void Start()
     {
@@ -22,6 +21,7 @@ public class Ball : MonoBehaviour
     {
         transform.position = new Vector2(GameHandler.center.x, GameHandler.center.y);
         direction = new Vector2(Random.value, Random.value).normalized;
+        speed = 5f;
         gameOver = false;
     }
 
@@ -35,7 +35,6 @@ public class Ball : MonoBehaviour
             return;
 
         transform.Translate(direction * speed * Time.deltaTime);
-        speed += incSpeed;
 
         if (transform.position.x < GameHandler.bottomLeft.x + radius && direction.x < 0)
             direction.x = -direction.x;
