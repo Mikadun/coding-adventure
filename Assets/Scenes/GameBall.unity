@@ -250,3 +250,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: -3884537375843110767, guid: b42ccd6a088f80947809655bedda24c0, type: 3}
   paddle: {fileID: 8713535337535866311, guid: 64c83fd8212f092449302c0fbbff0761, type: 3}
+  offset: 10
